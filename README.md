@@ -1,11 +1,12 @@
-# PyRobin
+### PyRobin
 
 This is the python implementation of  https://gitlab.com/raduion/robindialog
 
-### For a demo please use ``` python .\main.py precis.mw ```
+## For a demo please use 
+``` python .\main.py precis.mw ```
 
-###  Create conda environment with all dependencies 
+##  Create conda environment with all dependencies 
 ``` conda env create -f env.yml ```
 
-###  Activate conda environment 
+##  Activate conda environment 
 ```activate robin```
