@@ -6,7 +6,7 @@ This is the python implementation of  https://gitlab.com/raduion/robindialog
 ``` python .\main.py precis.mw ```
 
 
-###  Create conda environment with all dependencies 
+###  Create conda environment 
 ``` conda env create -f env.yml ```
 
 ###  Activate conda environment 
