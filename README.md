@@ -12,7 +12,7 @@ This is the python implementation of  https://gitlab.com/raduion/robindialog
 ###  Activate conda environment 
 ```activate robin```
 
-TODO:
+To Do:
 - solving the ambiguity of the question by clarifying the user's intention
 - detecting True/ false questions 
 - adding ASR and TTS components
