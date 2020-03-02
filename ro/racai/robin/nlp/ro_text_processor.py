@@ -27,9 +27,10 @@ class RoTextProcessor(TextProcessor):
         headers = {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
         response = requests.post(url=RoTextProcessor.TEPROLIN_QUERY, headers=headers, data=data)
         status_code = response.status_code
+    
 
         if status_code == 200:
-            content = json.loads(response.json())
+            content = json.loads(json.dumps(response.json()))
         else:
             logging.error("TEPROLIN query error for text '" + text + "'; error code " + status_code)
 

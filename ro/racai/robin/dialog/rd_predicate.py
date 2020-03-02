@@ -160,7 +160,7 @@ class RDPredicate:
 
         def __init__(self, predicate):
             self.matched_predicate = predicate
-            self.arg_match_scores = float(len(predicate.get_arguments()))
+            self.arg_match_scores = [None] * len(predicate.get_arguments())
             self.match_score = 0.0
             self.said_argument_index = -1
             self.is_valid_match = False

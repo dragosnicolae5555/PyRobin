@@ -1,5 +1,6 @@
 import getopt
 import sys
+from collections.abc import Iterable 
 
 from ro.racai.robin.dialog.rd_robot_behaviour import RDRobotBehaviour
 from ro.racai.robin.dialog.rd_manager import RDManager
@@ -62,7 +63,10 @@ if __name__ == "__main__":
             continue
         dstat = dman.do_conversation(prompt)
         print("Pepper> ")
-        print(" ".join(dstat.get_reply()))
+        if isinstance(dstat.get_reply()(), Iterable):
+            print(" ".join(dstat.get_reply()()))
+        else :      
+            print(" ".join(dstat.get_reply()))
         print("\n")
 
         if dstat.is_dialogue_done():

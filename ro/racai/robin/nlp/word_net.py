@@ -81,7 +81,7 @@ class WordNet(metaclass=ABCMeta):
         """
         pass
 
-    def wordnet_equals(self, w1, w2):
+    def word_net_equals(self, w1, w2):
         """
         <p>Does a WordNet first order neighborhood search to
         see if the two parameters can be made equal.</p>

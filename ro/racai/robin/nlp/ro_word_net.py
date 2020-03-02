@@ -55,16 +55,17 @@ class RoWordNet(WordNet):
     @staticmethod
     def json_word_net_response(word):
         query = RoWordNet.WORDNET_QUERY
-        word = parse.urlencode(word, encoding="UTF-8")
+        word = parse.quote_plus(word, encoding="UTF-8")
         query = query.replace("#WORD#", word)
         query = query.replace("#ILI#", "")
 
         headers = {'Content-Type': 'application/json'}
         response = requests.get(url=query, headers=headers)
         status_code = response.status_code
+     
 
         if status_code == 200:
-            return json.loads(response.json())
+            return json.loads(json.dumps(response.json()))
         else:
             logging.error("RELATE query error for word '" + word + "'; error code " + status_code)
 
