@@ -45,9 +45,8 @@ class RoTextProcessor(TextProcessor):
             msd = tk["_msd"]
             head = int(tk["_head"])
             deprel = str(tk["_deprel"])
-
             tokens.append(self.Token(word_form, lemma, msd, head, deprel, False))
-
+        
         return tokens
 
     def text_correction(self, text):
@@ -55,6 +54,7 @@ class RoTextProcessor(TextProcessor):
         return text
 
     def query_analyzer(self, query):
+
         if query is None:
             return None
         result = self.Query()
@@ -62,6 +62,7 @@ class RoTextProcessor(TextProcessor):
         query_words = []
 
         for token in query:
+            print(query)
             query_words.append(token.wform)
 
         # -1. If hello, return quickly.
@@ -86,7 +87,7 @@ class RoTextProcessor(TextProcessor):
             index += 1
 
         if action_verb_id == 0:
-            logging.error("Could not find an action verb in the query '" + self.query_to_string() + "'")
+            logging.error("Could not find an action verb in the query '" + self.query_to_string(query) + "'")
             return None
 
         # 2. Find all arguments (first dependents) of the action verb.
@@ -152,7 +153,6 @@ class RoTextProcessor(TextProcessor):
             result.query_type = QType.HOW
         else:
             result.query_type = QType.YESNO
-
         return result
 
     @staticmethod

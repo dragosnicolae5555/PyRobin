@@ -65,8 +65,9 @@ class TextProcessor(metaclass=ABCMeta):
                    "\t" + str(self.is_action_verb_dependent)
 
         def __str__(self):
+         
             return self.wform + "/" + self.lemma \
-                   + "/" + self.POS + " " + self.drel + "<-" + self.head
+                   + "/" + self.POS + " " + self.drel + "<-" + str(self.head)
 
     class Argument:
         """
