@@ -30,7 +30,7 @@ class RoTextProcessor(TextProcessor):
     
 
         if status_code == 200:
-            content = json.loads(json.dumps(response.json()))
+            content = response.json()
         else:
             logging.error("TEPROLIN query error for text '" + text + "'; error code " + status_code)
 
@@ -62,7 +62,6 @@ class RoTextProcessor(TextProcessor):
         query_words = []
 
         for token in query:
-            print(query)
             query_words.append(token.wform)
 
         # -1. If hello, return quickly.
@@ -82,7 +81,7 @@ class RoTextProcessor(TextProcessor):
             if t.head == 0 and t.POS.startswith("Vm"):
                 result.action_verb = t.lemma.lower()
                 # These are 1-based
-                action_verb_id += 1
+                action_verb_id =index + 1
                 break
             index += 1
 

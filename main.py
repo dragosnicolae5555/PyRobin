@@ -63,8 +63,8 @@ if __name__ == "__main__":
             continue
         dstat = dman.do_conversation(prompt)
         print("Pepper> ")
-        if isinstance(dstat.get_reply()(), Iterable):
-            print(" ".join(dstat.get_reply()()))
+        if isinstance(dstat.get_reply(), Iterable):
+            print(" ".join(dstat.get_reply()))
         else :      
             print(" ".join(dstat.get_reply()))
         print("\n")

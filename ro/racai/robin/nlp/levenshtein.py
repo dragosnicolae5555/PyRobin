@@ -53,7 +53,7 @@ class Levenshtein:
             a = b
             b = ts
 
-        cost = [None] * (lb + 1)
+        cost = [0] * (lb + 1)
         i = 1
         while i <= la:
             cost[0] = i

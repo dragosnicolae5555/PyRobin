@@ -146,7 +146,7 @@ class RDUniverse:
         for tok in user_tokens:
             if tok.is_action_verb_dependent and not self.lexicon.is_functional_pos(tok.POS):
                 if bound_concept.is_this_concept(tok.lemma, self.word_net) \
-                        and bound_concept.is_this_concept(tok.wform, self.word_net):
+                        or bound_concept.is_this_concept(tok.wform, self.word_net):
                     return True
         return False
 
@@ -207,6 +207,7 @@ class RDUniverse:
                         self.is_of_same_type(p_arg, q_arg, query.query_type) and\
                         result.said_argument_index == -1:
                     result.said_argument_index = i
+                j += 1
             result.match_score += max_score
             result.arg_match_scores[i] = max_score
             i += 1
@@ -263,18 +264,21 @@ class RDUniverse:
             wi = description[i].wform
 
             if self.lexicon.is_functional_pos(description[i].POS):
+                i += 1
                 continue
             jj = 0
             while jj < len(reference):
                 if self.lexicon.is_functional_pos(reference[jj].POS):
                     # Skip functional words from match.
+                    jj += 1
                     continue
                 wjj = reference[jj].wform
                 ljj = reference[jj].lemma
 
-                if li.lower() == ljj.lower() or self.word_net.wordnet_equals(li, ljj):
+                if li.lower() == ljj.lower() or self.word_net.word_net_equals(li, ljj):
                     L = 0
                     j = jj
+                    jj += 1
                     break
                 else:
                     d = self.word_distance.distance(wi.lower(), wjj.lower(), 5)
